@@ -1,0 +1,66 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.homeImage {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  padding-left: 80px;
+}
+
+#home {
+  width: 90%;
+  height: auto;
+}
+
+.details {
+  height: 100%;
+  flex: 1;
+  font-family: "MuseoSans";
+  justify-content: center;
+  align-items: flex-start;
+  color: #7E7E7E;
+  display: flex;
+  flex-direction: column;
+  font-weight: 100;
+  font-size: 40pt;
+  background-color: '#FF0000';
+  padding: 50px;
+}
+
+.description {
+  font-family: "MuseoSans";
+  font-weight: 100;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.logoContainer {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 100px;
+  margin-top: 50px;
+}
+
+#logo {
+  width: auto;
+  height: 150px;
+}
+
+.example-appear {
+  opacity: 0.01;
+}
+
+.example-appear.example-appear-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
