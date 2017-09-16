@@ -34,3 +34,9 @@ html, body {
 	height: 100%;
 	background-image: url('./background-diagonal.png')
 }
+
+#root {
+	height: 100%;
+}
+
+#root > [data-reactroot] { height: 100% }

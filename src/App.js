@@ -1,6 +1,18 @@
 import React, { Component } from 'react'
-import Transition from 'react-transition-group/Transition'
-import './css/App.css'
+import MainPage from './pages/MainPage'
+import theme from './themes/default'
+import styled from 'styled-components'
+import { ThemeProvider } from 'styled-components'
+
+const Wrapper = styled.div`
+	padding-left: 150px;
+	padding-right: 50px;
+
+	@media (max-width: 768px) {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+`
 
 class App extends Component {
 
@@ -17,32 +29,11 @@ class App extends Component {
 
 	render() {
 		return (
-			<Transition
-				in={this.state.isEntering}
-				timeout={500}
-			>
-				<div className="container">
-					<div className="homeImage">
-						<img src="/assets/Home/Home.png" id="home"/>
-					</div>
-					<div className="details">
-						BASIC
-						<br />
-						COMPUTING
-						<br />
-						COMMUNITY
-						<div className="description">
-							BCC merupakan komunitas yang berada di bawah naungan <br/>
-							Laboratorium Pembelajaran Ilmu Komputer <br/>
-							Universitas Brawijaya yang bergerak di <br/>
-							bidang teknologi. <br/>
-						</div>
-					</div>
-					<div className="logoContainer">
-						<img src="/assets/Logo/bcc-logo-vertical-fit-complete.png" id="logo"/>
-					</div>
-				</div>
-			</Transition>
+			<ThemeProvider theme={theme}>
+				<Wrapper>
+					<MainPage />
+				</Wrapper>
+			</ThemeProvider>
 		)
 	}
 }

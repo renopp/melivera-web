@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "flexboxgrid2": "^7.0.0-alpha7",
+    "mdi-react": "^2.0.46",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-transition-group": "^2.2.0"
+    "react-transition-group": "^2.2.0",
+    "styled-components": "^2.1.2",
+    "styled-theme": "^0.3.3"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
