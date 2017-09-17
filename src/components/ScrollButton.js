@@ -16,15 +16,32 @@ const Button = styled.a`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	cursor: pointer;
+	transition: all 0.25s;
+	user-select: none;
 
 	@media (max-width: 768px) {
 		align-self: center;
 	}
+
+	&:hover {
+		color: #ffffff;
+		background-color: #318bf3;
+	}
 `
 
 const ArrowDownIcon = styled(ArrowDown) `
+	transition: fill 0.25s;
 	fill: #318bf3;
 	margin-right: 5px;
+
+	${Button}:hover & {
+		fill: #ffffff;
+	}
+`
+
+const Text = styled.span`
+	user-select: none;
 `
 
 class ScrollButton extends Component {
@@ -44,7 +61,7 @@ class ScrollButton extends Component {
 
 	render() {
 		return (
-			<Button><ArrowDownIcon /> {this.state.text}</Button>
+			<Button><ArrowDownIcon /> <Text>{this.state.text}</Text></Button>
 		)
 	}
 }

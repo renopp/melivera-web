@@ -4,31 +4,60 @@ import styled from 'styled-components'
 import { font } from 'styled-theme'
 import ScrollButton from '../components/ScrollButton'
 
-const Wrapper = styled(Grid)`
+const Row = styled.div`
 	height: 100%;
+	justify-content: center;
+	overflow: hidden;
 `
 
-const FullRow = styled(Row)`
-	height: 100%;
-`
-
-const Column = styled(Col)`
+const Column = styled.div`
 	display: flex;
 	height: 100%;
 	justify-content: center;
 	flex-direction: column;
-	padding-bottom: 15%;
-	@media (max-width: 768px) {
+	padding-bottom: 5%;
+
+	@media (max-width: 992px) {
 		height: auto;
+		padding-bottom: 0;
 	}
 `
 
 const Image = styled.img`
 	width: calc(100% - 50px);
 	height: auto;
+	user-select: none;
+	user-drag: none;
+	opacity: 0;
+	transition: all 400ms ease-out;
 
-	@media (max-width: 768px) {
+	&.entered {
+		opacity: 1;
+	}
+
+	@media (max-width: 992px) {
 		width: 100%;
+	}
+`
+
+const Logo = styled.img`
+	width: 100px;
+	height: auto;
+	align-self: center;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	user-select: none;
+	user-drag: none; 
+`
+
+const HeadingWrapper = styled.div`
+	transform: translate(0, 50px);
+	transition: all 400ms ease-out;
+	opacity: 0;
+
+	&.entered {
+		opacity: 1;
+		transform: translate(0, 0);
 	}
 `
 
@@ -39,8 +68,11 @@ const Heading = styled.h1`
 	font-weight: 300;
 	display: block;
 	color: #565656;
-	@media (max-width: 768px) {
+	user-select: none;
+
+	@media (max-width: 992px) {
 		text-align: center;
+		font-size: 36px;
 	}
 `
 
@@ -50,42 +82,64 @@ const Text = styled.p`
 	font-weight: 300;
 	color: #565656;
 	padding-left: 5px;
+	opacity: 0;
+	transform: translate(0, 50px);
+	transition: all 700ms ease-out;
+	
+	&.entered {
+		opacity: 1;
+		transform: translate(0, 0);
+	}
 
-	@media (max-width: 768px) {
+	@media (max-width: 992px) {
 		text-align: center;
+		font-size: 16px;
 	}
 `
 
 class MainPage extends Component {
-
-	constructor(props) {
-		super(props)
-		this.state = {
-			isEntering: false
-		}
-	}
-
 	render() {
 		return (
-			<Wrapper fluid>
-				<FullRow>
-					<Column xs={12} md={6}>
-						<Image src="/assets/Home/Home.png"/>
-					</Column>
-					<Column first-xs xs={12} md={6}>
-						<Heading>BASIC</Heading>
-						<Heading>COMPUTING</Heading>
-						<Heading>COMMUNITY</Heading>
-						<Text>
-							BCC merupakan komunitas yang berada dibawah naungan
-							Laboratorium Pembelajaran Ilmu Komputer 
-							Universitas Brawijaya yang bergerak 
-							dibidang teknologi.
-						</Text>
-						<ScrollButton />
-					</Column>
-				</FullRow>
-			</Wrapper>
+			<Row className="row" id="main">
+				<Column className="hidden-lg hidden-xl">
+					<Logo src="/assets/Logo/bcc-logo-horizontal-fit-complete.png" />
+				</Column>
+				<Column className="col-xs-12 col-lg-6">
+					<Transition in={this.props.in} timeout={0}>
+						{(state) => {
+							return (
+								<HeadingWrapper className={state}>
+									<Heading>BASIC</Heading>
+									<Heading>COMPUTING</Heading>
+									<Heading>COMMUNITY</Heading>
+								</HeadingWrapper>
+							)
+						}}
+					</Transition>
+					<Transition in={this.props.in} timeout={300}>
+						{(state) => {
+							return (
+								<Text className={state}>
+									BCC merupakan komunitas yang berada dibawah naungan
+									Laboratorium Pembelajaran Ilmu Komputer
+									Universitas Brawijaya yang bergerak
+									dibidang teknologi.
+								</Text>
+							)
+						}}
+					</Transition>
+					<ScrollButton />
+				</Column>
+				<Column className="first-lg col-xs-12 col-lg-6">
+					<Transition in={this.props.in} timeout={0}>
+						{(state) => {
+							return (
+								<Image className={state} src="/assets/Home/Home.png" />
+							)
+						}}
+					</Transition>
+				</Column>
+			</Row>
 		)
 	}
 }
