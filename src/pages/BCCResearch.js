@@ -12,6 +12,7 @@ const Wrapper = styled.div`
 const Row = styled.div`
 	display: flex;
 	height: 100%;
+	width: 100%;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
@@ -64,10 +65,129 @@ const Text = styled.p`
 	}
 `
 
-class BCCResearch extends Component {
+const Image = styled.img`
+	width: 100%;
+	height: 220px;
+	border-radius: 3px;
+`
+
+const Name = styled.h3`
+	margin: 5px;
+	color: #7c7e7e;
+	text-align: center;
+	font-family: ${font('primary')};
+`
+
+const RowBox = styled.div`
+	padding: 0 100px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow-y: scroll;
+
+	@media(max-width: 768px) {
+		display: block;
+		align-items: flex-start;
+		justify-content: flex-start;
+		white-space: nowrap;		
+	}
+`
+
+const Box = styled.div`
+	background-color: #e4eff3;
+	border: 1px solid #999;
+	border-radius: 3px;
+	width: 250px;
+	height: 350px;
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	margin: 0 10px;
+	opacity: 0;
+	transform: translate(50px);
+	transition: height 50ms ease-in, width 50ms ease-in, opacity 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+	&.entered {
+		opacity: 1;
+		transform: translate(0, 0);
+	}
+
+	&:hover {
+		height: 350px;
+		width: 250px;
+	}
+
+	@media (max-width: 768px) {
+		width: ${props => (props.width-90)  + 'px'};
+		margin: 0 10px;
+		white-space: normal;	
+		
+		&:hover {
+			height: 350px;
+			width: ${props => (props.width-90) + 'px'};
+		}
+	}
+`
+
+const Desc = styled.p`
+	color: #7c7e7e;
+	font-family: ${font('primary')};
+	font-size: 12px;
+	text-align: center;
+
+	${Box}:hover & {
+		font-size: 12px;
+	}
+
+	@media (max-width: 768px) {
+		${Box}:hover & {
+			font-size: 12px;
+		}
+	}
+`
+
+class Departemen extends Component {
+
+	constructor(props) {
+		super(props)
+		this.state = {
+			isEntering: false,
+			mobile: false,
+			boxWidth: window.innerWidth,
+		}
+	}
+
+	componentWillMount() {
+		if(window.innerWidth < 768) {
+			this.setState({
+				mobile: true,
+				boxWidth: window.innerWidth
+			})
+		}
+	}
+
+	componentDidMount() {
+		window.addEventListener('resize', () => this.updateSize())
+	}
+
+	updateSize() {
+		if(window.innerWidth < 768) {
+			this.setState({
+				mobile: true,
+				boxWidth: window.innerWidth
+			})
+		} else {
+			this.setState({
+				mobile: false,
+			})
+		}
+	}
+
 	render() {
 		return (
-			<Wrapper id="bcc-research">
+			<Wrapper id="departemen">
 				<Row>
 					<Transition in={this.props.in} timeout={0}>
 						{(state) => {
@@ -80,15 +200,59 @@ class BCCResearch extends Component {
 						{(state) => {
 							return (
 								<Text className={state}>
-									Work In Progress
+									Basic Computing Community memiliki penelitian dalam mengembangkan produk.
+									Produk yang dibuat merupakan based on problem sehingga menghasilkan produk
+									yang sesuai dengan kebutuhan
 								</Text>
 							)
 						}}
 					</Transition>
+					<RowBox id="main">
+						<Transition in={this.props.in} timeout={300}>
+							{(state) => {
+								return (
+									<Box width={this.state.boxWidth} className={state} style={{marginLeft: '22px'}}>
+										<Image src="/assets/BCC-Research/Asset-BCC-Research-1-Img.png" />
+										<Name>BCC Research - Introduction</Name>
+										<Desc>Perkenalan BCC Research apa saja yang dikembangkan dalam BCC-Research
+											dan dalam pengembangannya bertujuan untuk apa
+										</Desc>
+									</Box>
+								)
+							}}
+						</Transition>
+						<Transition in={this.props.in} timeout={600}>
+							{(state) => {
+								return (
+									<Box width={this.state.boxWidth} className={state}>
+										<Image src="/assets/BCC-Research/Asset-BCC-Research-4-Img.png" />
+										<Name>BCC Research - Yona Smart House</Name>
+										<Desc>Dalam perkembangan teknologi dibutuhkan asisten yang dapat
+											mengontrol rumah dari jauh dengan keamanan yang baik
+										</Desc>
+									</Box>
+								)
+							}}
+						</Transition> 
+						<Transition in={this.props.in} timeout={900}>
+							{(state) => {
+								return (
+									<Box width={this.state.boxWidth} className={state}>
+										<Image src="/assets/BCC-Research/Asset-BCC-Research-3-Img.png" />
+										<Name>BCC Research - Drop Here</Name>
+										<Desc>Ketika mengumpulkan berkas tugas untuk keperluan akademik dibutuhkan
+											satu lokasi untuk mengumpulkan tugas dengan menggunakan password dan
+											tugas tidak dapat dilihat oleh orang lain
+										</Desc>
+									</Box>
+								)
+							}}
+						</Transition> 
+					</RowBox>
 				</Row>
 			</Wrapper>
 		)
 	}
 }
 
-export default BCCResearch
+export default Departemen

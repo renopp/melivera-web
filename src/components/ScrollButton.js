@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { font } from 'styled-theme'
 import ArrowDown from 'mdi-react/ChevronDoubleDownIcon'
 
-const Button = styled.a`
+const Button = styled.span`
 	width: 200px;
 	padding: 5px 10px;
 	border: 1px solid #318bf3;
@@ -19,6 +19,14 @@ const Button = styled.a`
 	cursor: pointer;
 	transition: all 0.25s;
 	user-select: none;
+	opacity: 0;
+	transform: translate(0, 50px);
+	transition: all 700ms ease-out;
+	
+	&.entered {
+		opacity: 1;
+		transform: translate(0, 0);
+	}
 
 	@media (max-width: 768px) {
 		align-self: center;
@@ -61,7 +69,7 @@ class ScrollButton extends Component {
 
 	render() {
 		return (
-			<Button><ArrowDownIcon /> <Text>{this.state.text}</Text></Button>
+			<Button className={this.props.className} onClick={() => this.props.press()}><ArrowDownIcon /> <Text>{this.state.text}</Text></Button>
 		)
 	}
 }

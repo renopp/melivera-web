@@ -8,6 +8,12 @@ const Row = styled.div`
 	height: 100%;
 	justify-content: center;
 	overflow: hidden;
+	display: flex;
+	flex-direction: row;
+
+	@media (max-width: 992px) {
+		flex-direction: column;
+	}
 `
 
 const Column = styled.div`
@@ -20,6 +26,14 @@ const Column = styled.div`
 	@media (max-width: 992px) {
 		height: auto;
 		padding-bottom: 0;
+	}
+`
+
+const ColumnFirst = styled(Column)`
+	order: -1;
+
+	@media (max-width: 992px) {
+		order: 1;
 	}
 `
 
@@ -48,6 +62,10 @@ const Logo = styled.img`
 	margin-bottom: 15px;
 	user-select: none;
 	user-drag: none; 
+
+	@media (min-width: 993px) {
+		display: none;
+	}
 `
 
 const HeadingWrapper = styled.div`
@@ -128,9 +146,15 @@ class MainPage extends Component {
 							)
 						}}
 					</Transition>
-					<ScrollButton />
+					<Transition in={this.props.in} timeout={300}>
+						{(state) => {
+							return (
+								<ScrollButton className={state} press={() => this.props.scroll()} />
+							)
+						}}
+					</Transition>
 				</Column>
-				<Column className="first-lg col-xs-12 col-lg-6">
+				<ColumnFirst>
 					<Transition in={this.props.in} timeout={0}>
 						{(state) => {
 							return (
@@ -138,7 +162,7 @@ class MainPage extends Component {
 							)
 						}}
 					</Transition>
-				</Column>
+				</ColumnFirst>
 			</Row>
 		)
 	}

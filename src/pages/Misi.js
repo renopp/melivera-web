@@ -17,11 +17,11 @@ const Row = styled.div`
 `
 
 const Image = styled.img`
-	width: 700px;
-	height: auto;
+	width: auto;
+	height: 40%;
 	user-select: none;
 	user-drag: none; 
-	margin-top: 50px;
+	margin-top: 20px;
 	opacity: 0;
 	transform: translate(0, 50px);
 	transition: all 500ms ease-out;
@@ -95,7 +95,7 @@ class Misi extends Component {
 
 	render() {
 		return (
-			<Wrapper id="misi">
+			<Wrapper id="MISI">
 				<Row>
 					<Transition in={this.props.in} timeout={0}>
 						{(state) => {

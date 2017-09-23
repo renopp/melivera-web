@@ -5,24 +5,17 @@ import { font } from 'styled-theme'
 
 const Wrapper = styled.div`
 	height: 100%;
+	width: 100%;
 	position: relative;
 `
 
 const Row = styled.div`
 	display: flex;
 	height: 100%;
+	width: 100%;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-`
-
-const RowBox = styled.div`
-	padding: 0 100px;
-	width: 100%;
-	height: 400px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 `
 
 const Heading = styled.h1`
@@ -82,13 +75,29 @@ const Name = styled.h3`
 	font-family: ${font('primary')};
 `
 
+const RowBox = styled.div`
+	padding: 0 100px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow-y: scroll;
+
+	@media(max-width: 768px) {
+		display: block;
+		align-items: flex-start;
+		justify-content: flex-start;
+		white-space: nowrap;		
+	}
+`
+
 const Box = styled.div`
 	background-color: #e4eff3;
 	border: 1px solid #999;
 	border-radius: 3px;
 	width: 180px;
 	height: 300px;
-	display: flex;
+	display: inline-flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
@@ -107,6 +116,17 @@ const Box = styled.div`
 		height: 350px;
 		width: 200px;
 	}
+
+	@media (max-width: 768px) {
+		width: ${props => (props.width-90)  + 'px'};
+		margin: 0 10px;
+		white-space: normal;	
+		
+		&:hover {
+			height: 300px;
+			width: ${props => (props.width-90) + 'px'};
+		}
+	}
 `
 
 const Desc = styled.p`
@@ -118,6 +138,12 @@ const Desc = styled.p`
 	${Box}:hover & {
 		font-size: 14px;
 	}
+
+	@media (max-width: 768px) {
+		${Box}:hover & {
+			font-size: 12px;
+		}
+	}
 `
 
 class Departemen extends Component {
@@ -125,7 +151,35 @@ class Departemen extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			isEntering: false
+			isEntering: false,
+			mobile: false,
+			boxWidth: window.innerWidth,
+		}
+	}
+
+	componentWillMount() {
+		if(window.innerWidth < 768) {
+			this.setState({
+				mobile: true,
+				boxWidth: window.innerWidth
+			})
+		}
+	}
+
+	componentDidMount() {
+		window.addEventListener('resize', () => this.updateSize())
+	}
+
+	updateSize() {
+		if(window.innerWidth < 768) {
+			this.setState({
+				mobile: true,
+				boxWidth: window.innerWidth
+			})
+		} else {
+			this.setState({
+				mobile: false,
+			})
 		}
 	}
 
@@ -155,7 +209,7 @@ class Departemen extends Component {
 						<Transition in={this.props.in} timeout={300}>
 							{(state) => {
 								return (
-									<Box className={state}>
+									<Box width={this.state.boxWidth} className={state} style={{marginLeft: '22px'}}>
 										<Image src="/assets/Department/Asset-Profile-PR.png" />
 										<Name>Public Relations</Name>
 										<Desc>Departemen yang berfokus dalam melakukan
@@ -170,7 +224,7 @@ class Departemen extends Component {
 						<Transition in={this.props.in} timeout={600}>
 							{(state) => {
 								return (
-									<Box className={state}>
+									<Box width={this.state.boxWidth} className={state}>
 										<Image src="/assets/Department/Asset-Profile-Creative.png" />
 										<Name>Creative</Name>
 										<Desc>Departemen yang berfokus pada User Interface dan
@@ -180,11 +234,11 @@ class Departemen extends Component {
 									</Box>
 								)
 							}}
-						</Transition>
+						</Transition> 
 						<Transition in={this.props.in} timeout={900}>
 							{(state) => {
 								return (
-									<Box className={state}>
+									<Box width={this.state.boxWidth} className={state}>
 										<Image src="/assets/Department/Asset-Profile-RnD.png" />
 										<Name style={{ fontSize: '14px' }}>Research & Development</Name>
 										<Desc>Departemen yang berfokus dalam mengembangkan produk
@@ -194,11 +248,11 @@ class Departemen extends Component {
 									</Box>
 								)
 							}}
-						</Transition>
+						</Transition> 
 						<Transition in={this.props.in} timeout={1200}>
 							{(state) => {
 								return (
-									<Box className={state}>
+									<Box width={this.state.boxWidth} className={state} style={{marginRight: '22px'}}>
 										<Image src="/assets/Department/Asset-Profile-Tm.png" />
 										<Name>Talent Management</Name>
 										<Desc>Departemen yang berfokus dalam mengembangkan kemampuan
@@ -208,7 +262,7 @@ class Departemen extends Component {
 									</Box>
 								)
 							}}
-						</Transition>
+						</Transition> 
 					</RowBox>
 				</Row>
 			</Wrapper>

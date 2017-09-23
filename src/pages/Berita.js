@@ -80,7 +80,7 @@ class Berita extends Component {
 						{(state) => {
 							return (
 								<Text className={state}>
-									Work In Progress
+									Ditunggu berita selanjutnya :)
 								</Text>
 							)
 						}}

@@ -10,33 +10,41 @@
 	font-weight: 300
 }
 
-@font-face {
+/* @font-face {
 	font-family: "MuseoSans";
 	src: url('/assets/Font/MuseoSans_500.otf');
 	font-weight: 500
-}
+} */
 
 @font-face {
 	font-family: "MuseoSans";
 	src: url('/assets/Font/MuseoSans_700.otf');
 	font-weight: 700
 }
-
+/* 
 @font-face {
 	font-family: "MuseoSans";
 	src: url('/assets/Font/MuseoSans_900.otf');
 	font-weight: 900
-}
+} */
 
 html, body {
 	font-family: "MuseoSans", sans-serif;
 	font-size: 11pt;
-	height: 100%;
 	background-image: url('./background-diagonal.png')
 }
 
 #root {
 	height: 100%;
+}
+
+::-webkit-scrollbar {
+	width: 0px;
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: transparent;
 }
 
 #root > [data-reactroot] { height: 100% }
