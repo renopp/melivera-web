@@ -121,7 +121,7 @@ const SideMenu = styled.div`
 	position: fixed;
 	height: 100%;
 	width: 300px;
-	background-color: #318bf3;
+	background-color: #00BCD4;
 	z-index: 99;
 	transform: translate(-300px, 0);
 	opacity: 0;
@@ -191,7 +191,7 @@ class Navigation extends Component {
 	}
 
 	render() {
-		const menus = ['HOME', 'MISI', 'DEPARTEMEN', 'RESEARCH', 'TUTORIAL', 'BERITA', 'KONTAK']
+		const menus = ['HOME', 'MISSION', 'DIVISION', 'RESEARCH', 'PARTNER', 'CHAT WITH US','CONTACT']
 		return (
 			<Wrapper>
 				<Backdrop 
@@ -201,7 +201,7 @@ class Navigation extends Component {
 				<MenuWrapper onClick={() => this.setState({sideOpen: true})}><MenuIcon/></MenuWrapper>
 				<SideMenu className={this.state.sideOpen ? 'active' : ''}>
 					<CloseIcon onClick={() => this.setState({sideOpen: false})} />
-					<Logo src="/assets/Logo/bcc-logo-horizontal-fit-complete-white.png" />
+					<Logo src="/assets/Logo/melivera-hitam.png" />
 					<SideBarList>
 						{ menus.map((e, i) => {
 							return (

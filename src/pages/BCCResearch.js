@@ -192,7 +192,7 @@ class Departemen extends Component {
 					<Transition in={this.props.in} timeout={0}>
 						{(state) => {
 							return (
-								<Heading className={state}>BCC - Research</Heading>
+								<Heading className={state}>Melivera Research</Heading>
 							)
 						}}
 					</Transition>
@@ -200,55 +200,11 @@ class Departemen extends Component {
 						{(state) => {
 							return (
 								<Text className={state}>
-									Basic Computing Community memiliki penelitian dalam mengembangkan produk.
-									Produk yang dibuat merupakan based on problem sehingga menghasilkan produk
-									yang sesuai dengan kebutuhan
+									coming soon
 								</Text>
 							)
 						}}
 					</Transition>
-					<RowBox id="main">
-						<Transition in={this.props.in} timeout={300}>
-							{(state) => {
-								return (
-									<Box width={this.state.boxWidth} className={state} style={{marginLeft: '22px'}}>
-										<Image src="/assets/BCC-Research/Asset-BCC-Research-1-Img.png" />
-										<Name>BCC Research - Introduction</Name>
-										<Desc>Perkenalan BCC Research apa saja yang dikembangkan dalam BCC-Research
-											dan dalam pengembangannya bertujuan untuk apa
-										</Desc>
-									</Box>
-								)
-							}}
-						</Transition>
-						<Transition in={this.props.in} timeout={600}>
-							{(state) => {
-								return (
-									<Box width={this.state.boxWidth} className={state}>
-										<Image src="/assets/BCC-Research/Asset-BCC-Research-4-Img.png" />
-										<Name>BCC Research - Yona Smart House</Name>
-										<Desc>Dalam perkembangan teknologi dibutuhkan asisten yang dapat
-											mengontrol rumah dari jauh dengan keamanan yang baik
-										</Desc>
-									</Box>
-								)
-							}}
-						</Transition> 
-						<Transition in={this.props.in} timeout={900}>
-							{(state) => {
-								return (
-									<Box width={this.state.boxWidth} className={state}>
-										<Image src="/assets/BCC-Research/Asset-BCC-Research-3-Img.png" />
-										<Name>BCC Research - Drop Here</Name>
-										<Desc>Ketika mengumpulkan berkas tugas untuk keperluan akademik dibutuhkan
-											satu lokasi untuk mengumpulkan tugas dengan menggunakan password dan
-											tugas tidak dapat dilihat oleh orang lain
-										</Desc>
-									</Box>
-								)
-							}}
-						</Transition> 
-					</RowBox>
 				</Row>
 			</Wrapper>
 		)

@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 import Transition from 'react-transition-group/Transition'
+import RaisedButton from 'material-ui/RaisedButton'
+import FlatButton from 'material-ui/FlatButton'
+import Dialog from 'material-ui/Dialog'
+import TextField from 'material-ui/TextField'
 import styled from 'styled-components'
 import { font } from 'styled-theme'
 import FB from 'mdi-react/FacebookIcon'
@@ -127,6 +131,10 @@ const Box = styled.span`
 		padding: 2px 10px;
 	}
 `
+const ContainerInput = styled.div`
+	display: flex;
+	flex-direction: column;
+`
 
 const BoxIcon = styled.img`
 	width: 32px;
@@ -161,73 +169,73 @@ const Logo = styled.img`
 	}
 `
 
+
 class Kontak extends Component {
+	constructor(props) {
+		super(props)
+		this.state = { email: '', country: '', open: false }
+	}
+
+	handleOpen() {
+		this.setState({ open: true })
+	}
+
+	handleClose() {
+		this.setState({ email:'',country:'',open: false })
+		this.props.scroll()
+	}
+
+	handleChangeEmail(event) {
+		this.setState({ email: event.target.value, })
+	}
+
+	handleChangeCountry(event) {
+		this.setState({ country: event.target.value, })
+	}
+
 	render() {
+		const actions = [
+			<FlatButton label="Back to home" primary={true} onClick={this.handleClose.bind(this)} />,
+		]
+
+		console.log(this.state)
 		return (
 			<Wrapper id="kontak">
+				<Dialog
+					title="Thanks for contact us"
+					actions={actions}
+					modal={false}
+					open={this.state.open}
+					onRequestClose={this.handleClose}
+				>
+				We will immidiately contact you back
+				</Dialog>
 				<Row>
 					<Transition in={this.props.in} timeout={0}>
 						{(state) => {
 							return (
-								<Heading className={state}>Hubungi Kami</Heading>
+								<Heading className={state}>Ooops, sorry</Heading>
 							)
 						}}
 					</Transition>
-					<Transition in={this.props.in} timeout={300}>
+					<Transition in={this.props.in} timeout={200}>
 						{(state) => {
 							return (
 								<Text className={state}	>
-									Untuk informasi lebih lanjut tanyakan kepada kami melalui
-									kontak yang kami cantumkan dibawah ini
+									they are offline for a while, your question have sent to their inbox and will be replied immidiately.
+									Please give us your contact :
 								</Text>
 							)
 						}}
 					</Transition>
-					<Transition in={this.props.in} timeout={400}>
+					<Transition in={this.props.in} timeout={350}>
 						{(state) => {
 							return (
-								<Logo className={state} src="/assets/Logo/bcc-logo-horizontal-fit-complete.png" />
-							)
-						}}
-					</Transition>
-					<Transition in={this.props.in} timeout={500}>
-						{(state) => {
-							return (
-								<BoxRow>
-									<Box className={state}>
-										<BoxIcon src="/assets/Kontak/Line@.png" />
-										<BoxTextLeft>LINE@</BoxTextLeft><ChevronRightIcon /><BoxTextRight>@bccfilkom</BoxTextRight>
-									</Box>
-									<Box className={state}>
-										<TwitterIcon />
-										<BoxTextLeft>Twitter</BoxTextLeft><ChevronRightIcon /><BoxTextRight>@bccfilkom</BoxTextRight>
-									</Box>
-									<Box className={state}>
-										<IGIcon />
-										<BoxTextLeft>Instagram</BoxTextLeft><ChevronRightIcon /><BoxTextRight>@bccfilkom</BoxTextRight>
-									</Box>
-									<Box className={state}>
-										<YTIcon />
-										<BoxTextLeft>YouTube</BoxTextLeft><ChevronRightIcon /><BoxTextRight>bcc filkom ub</BoxTextRight>
-									</Box>
-									<Box className={state}>
-										<FBIcon />
-										<BoxTextLeft>Facebook</BoxTextLeft><ChevronRightIcon /><BoxTextRight>bcc filkom ub</BoxTextRight>
-									</Box>
-								</BoxRow>
-							)
-						}}
-					</Transition>
-					<Transition in={this.props.in} timeout={600}>
-						{(state) => {
-							return (
-								<Text className={state}>
-									Laboratorium Pembelajaran Ilmu Komputer<br />
-									Fakultas Ilmu Komputer Universitas Brawijaya Gedung B Ruang B1.8<br />
-									Jl. Veteran No.8 Polinema<br />
-									Malang 65145<br />
-									Indonesia
-								</Text>
+								<div style={{ display: 'flex', flexDirection: 'column' }}>
+									<TextField value={this.state.email} hintText="Your Email" floatingLabelText="Email" onChange={this.handleChangeEmail.bind(this)} />
+									<TextField value={this.state.country} hintText="Your Country" floatingLabelText="Country" onChange={this.handleChangeCountry.bind(this)} />
+									<RaisedButton label="Submit" primary={true} style={{ margin: 12 }} onClick={this.handleOpen.bind(this)}/>
+								</div>
 							)
 						}}
 					</Transition>

@@ -57,13 +57,13 @@ class ScrollButton extends Component {
 		super(props)
 
 		this.state = {
-			text: 'SCROLL TO FIND OUT',
+			text: 'Chat with us',
 		}
 	}
 
 	componentWillMount() {
 		if (typeof window.orientation !== 'undefined') {
-			this.setState({ text: 'SWIPE TO FIND OUT' })
+			this.setState({ text: 'Chat with us' })
 		}
 	}
 

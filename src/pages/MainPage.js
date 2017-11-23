@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Transition from 'react-transition-group/Transition'
 import styled from 'styled-components'
 import { font } from 'styled-theme'
+import Avatar from 'react-avatar'
 import ScrollButton from '../components/ScrollButton'
 
 const Row = styled.div`
@@ -14,6 +15,18 @@ const Row = styled.div`
 	@media (max-width: 992px) {
 		flex-direction: column;
 	}
+`
+
+const ProfessorGroup = styled.div`
+
+`
+
+const LeftColumn = styled.div`
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	padding-bottom: 5%;
+	justify-content: space-around
 `
 
 const Column = styled.div`
@@ -29,12 +42,11 @@ const Column = styled.div`
 	}
 `
 
-const ColumnFirst = styled(Column)`
-	order: -1;
-
-	@media (max-width: 992px) {
-		order: 1;
-	}
+const ColumnFirst = styled(Column) `
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+	padding-bottom: 5%;
 `
 
 const Image = styled.img`
@@ -93,7 +105,29 @@ const Heading = styled.h1`
 		font-size: 36px;
 	}
 `
+const InCollaborateContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	transition: all 400ms ease-out;
+`
+const CollaborationHeadText = styled.text`
+	font-family: ${font('primary')};
+	font-size: 30px;
+	font-weight: 10;
+	color: #565656;
+`
 
+const ProfessorProfile = styled.div`
+	display: flex;
+	flex-direction: column;
+	transition: all 400ms ease-out;
+`
+const ProfessorName = styled.text`
+	font-family: ${font('primary')};
+	font-size: 10px;
+	font-weight: 10;
+	color: #565656;
+`
 const Text = styled.p`
 	font-family: ${font('primary')};
 	font-size: 20px;
@@ -119,29 +153,61 @@ class MainPage extends Component {
 	render() {
 		return (
 			<Row className="row" id="main">
-				<Column className="hidden-lg hidden-xl">
-					<Logo src="/assets/Logo/bcc-logo-horizontal-fit-complete.png" />
-				</Column>
+				<LeftColumn style={{ width: '100%'}}>
+					<Transition in={this.props.in} timeout={300}>
+						{(state) => {
+							return (
+								<ProfessorGroup style={{ display: 'flex', flexDirection: 'column' }}>
+									<CollaborationHeadText style={{ alignSelf: 'center' }}>In Collaboration with</CollaborationHeadText>
+									<ProfessorGroup style={{ display: 'flex', justifyContent: 'space-around' }}>
+										<ProfessorProfile style={{ alignItems: 'center', flexWrap: 'nowrap' }}>
+											<Avatar style={{ marginTop: 20 }} round={true} src="https://preview.ibb.co/nQdGa6/joanna_mcgrenere.jpg" />
+											<ProfessorName>
+												Prof. Smith
+											</ProfessorName>
+											<ProfessorName >
+												Universtiy of California
+											</ProfessorName>
+										</ProfessorProfile>
+										<ProfessorProfile style={{ alignItems: 'center', flexWrap: 'nowrap' }}>
+											<Avatar style={{ marginTop: 20 }} round={true} src="https://preview.ibb.co/i4q7hm/1_IMG_4149b.jpg" />
+											<ProfessorName >
+												Prof. Nakagawa
+											</ProfessorName>
+											<ProfessorName >
+												Universtiy of Tokyo
+											</ProfessorName>
+										</ProfessorProfile>
+										<ProfessorProfile style={{ alignItems: 'center', flexWrap: 'nowrap' }}>
+											<Avatar style={{ marginTop: 20 }} round={true} src="https://preview.ibb.co/h3tkJR/faculty_sridhar.jpg" />
+											<ProfessorName >
+												Prof. Jack Barry
+											</ProfessorName>
+											<ProfessorName >
+												Michigan Universtiy
+											</ProfessorName>
+										</ProfessorProfile>
+									</ProfessorGroup>
+								</ProfessorGroup>
+							)
+						}}
+					</Transition>
+				</LeftColumn >
 				<Column className="col-xs-12 col-lg-6">
-					<Transition in={this.props.in} timeout={0}>
+					<Transition in={this.props.in} timeout={1}>
 						{(state) => {
 							return (
 								<HeadingWrapper className={state}>
-									<Heading>BASIC</Heading>
-									<Heading>COMPUTING</Heading>
-									<Heading>COMMUNITY</Heading>
+									<Heading>Melivera Hub</Heading>
 								</HeadingWrapper>
 							)
 						}}
 					</Transition>
-					<Transition in={this.props.in} timeout={300}>
+					<Transition in={this.props.in} timeout={301}>
 						{(state) => {
 							return (
 								<Text className={state}>
-									BCC merupakan komunitas yang berada dibawah naungan
-									Laboratorium Pembelajaran Ilmu Komputer
-									Universitas Brawijaya yang bergerak
-									dibidang teknologi.
+									Ask any problem to the professor and experienve beekepers
 								</Text>
 							)
 						}}
@@ -154,15 +220,6 @@ class MainPage extends Component {
 						}}
 					</Transition>
 				</Column>
-				<ColumnFirst>
-					<Transition in={this.props.in} timeout={0}>
-						{(state) => {
-							return (
-								<Image className={state} src="/assets/Home/Home.png" />
-							)
-						}}
-					</Transition>
-				</ColumnFirst>
 			</Row>
 		)
 	}

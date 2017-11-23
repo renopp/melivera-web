@@ -6,7 +6,7 @@ theme.fonts = {
 }
 
 theme.palette = {
-	primary: ['#318bf3'],
+	primary: ['#00BCD4'],
 }
 	
 theme.sizes = {

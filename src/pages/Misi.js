@@ -100,7 +100,7 @@ class Misi extends Component {
 					<Transition in={this.props.in} timeout={0}>
 						{(state) => {
 							return (
-								<Heading className={state}>Misi</Heading>
+								<Heading className={state}>Mission</Heading>
 							)
 						}}
 					</Transition>
@@ -108,21 +108,9 @@ class Misi extends Component {
 						{(state) => {
 							return (
 								<Text className={state}>
-									Basic Computing Community memfasilitasi mahasiswa yang tertarik
-						dalam bidang teknologi. Kami juga menyediakan kelas pelatihan kepada
-						setiap anggota kami untuk membangun kemampuan anggota supaya lebih
-						baik lagi. Kami mengembangkan produk dan juga mewajibkan anggota
-						kami untuk mengikuti perlombaan dalam kompetisi dalam bidang
-						teknologi. Kami juga menyediakan kelas pelatihan dibidang teknologi
-						untuk civitas Fakultas Ilmu Komputer Universitas Brawijaya.
+									Melivera memfasilitasi beekepers yang tertarik
+						untuk meningkatkan tingkat produksi madu lebah.
 								</Text>
-							)
-						}}
-					</Transition>
-					<Transition in={this.props.in} timeout={600}>
-						{(state) => {
-							return (
-								<Image className={state} src="/assets/Profile/Misi.png" />
 							)
 						}}
 					</Transition>

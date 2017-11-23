@@ -190,7 +190,7 @@ class Departemen extends Component {
 					<Transition in={this.props.in} timeout={0}>
 						{(state) => {
 							return (
-								<Heading className={state}>Departemen Kami</Heading>
+								<Heading className={state}>Division</Heading>
 							)
 						}}
 					</Transition>
@@ -198,72 +198,11 @@ class Departemen extends Component {
 						{(state) => {
 							return (
 								<Text className={state}>
-									Basic Computing Community memiliki empat departemen yang mengkategorikan
-									sesuai dengan kemampuan anggota kami untuk menjadikan kolaborasi
-									yang lebih baik.
+									coming soon
 								</Text>
 							)
 						}}
 					</Transition>
-					<RowBox id="main">
-						<Transition in={this.props.in} timeout={300}>
-							{(state) => {
-								return (
-									<Box width={this.state.boxWidth} className={state} style={{marginLeft: '22px'}}>
-										<Image src="/assets/Department/Asset-Profile-PR.png" />
-										<Name>Public Relations</Name>
-										<Desc>Departemen yang berfokus dalam melakukan
-								kerjasama dengan organisasi lain dan menjaga hubungan
-								baik dengan partner-partner yang sudah berkolaborasi bersama
-								Basic Computing Community
-										</Desc>
-									</Box>
-								)
-							}}
-						</Transition>
-						<Transition in={this.props.in} timeout={600}>
-							{(state) => {
-								return (
-									<Box width={this.state.boxWidth} className={state}>
-										<Image src="/assets/Department/Asset-Profile-Creative.png" />
-										<Name>Creative</Name>
-										<Desc>Departemen yang berfokus pada User Interface dan
-								juga User Experience bertujuan untuk branding produk
-								dan kegiatan di Basic Computing Community
-										</Desc>
-									</Box>
-								)
-							}}
-						</Transition> 
-						<Transition in={this.props.in} timeout={900}>
-							{(state) => {
-								return (
-									<Box width={this.state.boxWidth} className={state}>
-										<Image src="/assets/Department/Asset-Profile-RnD.png" />
-										<Name style={{ fontSize: '14px' }}>Research & Development</Name>
-										<Desc>Departemen yang berfokus dalam mengembangkan produk
-								dari Basic Computing Community dan mempelajari teknologi-teknologi
-								terbaru untuk dikembangkan bersama departemen lain
-										</Desc>
-									</Box>
-								)
-							}}
-						</Transition> 
-						<Transition in={this.props.in} timeout={1200}>
-							{(state) => {
-								return (
-									<Box width={this.state.boxWidth} className={state} style={{marginRight: '22px'}}>
-										<Image src="/assets/Department/Asset-Profile-Tm.png" />
-										<Name>Talent Management</Name>
-										<Desc>Departemen yang berfokus dalam mengembangkan kemampuan
-								dari civitas Fakultas Ilmu Komputer untuk menjadikan kemampuan
-								civitas lebih baik lagi
-										</Desc>
-									</Box>
-								)
-							}}
-						</Transition> 
-					</RowBox>
 				</Row>
 			</Wrapper>
 		)

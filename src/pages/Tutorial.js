@@ -192,7 +192,7 @@ class Departemen extends Component {
 					<Transition in={this.props.in} timeout={0}>
 						{(state) => {
 							return (
-								<Heading className={state}>Tutorial</Heading>
+								<Heading className={state}>Partner</Heading>
 							)
 						}}
 					</Transition>
@@ -200,60 +200,11 @@ class Departemen extends Component {
 						{(state) => {
 							return (
 								<Text className={state}>
-									Basic Computing Community menyediakan tutorial mengenai matakuliah 
-									pemrograman yang dipelajari diperkuliahan dengan penjelasan
-									yang lebih sederhana dan mudah dimengerti
+									Coming soon
 								</Text>
 							)
 						}}
 					</Transition>
-					<RowBox id="main">
-						<Transition in={this.props.in} timeout={300}>
-							{(state) => {
-								return (
-									<Box
-										href='https://www.youtube.com/watch?v=qc3NAAeq6sc&list=PLeuzLo3oi_x1D5h7ZZgS7vN6GEfrJkXF8'
-										target="_blank"
-										width={this.state.boxWidth} className={state} style={{marginLeft: '22px'}}>
-										<Image src="/assets/BCC-Tutorial/Asset-BCC-Tutorial-2-Img.png" />
-										<Name>Pemrograman Dasar</Name>
-										<Desc>Perkenalan dengan dunia pemrograman dari dasarnya
-										</Desc>
-									</Box>
-								)
-							}}
-						</Transition>
-						<Transition in={this.props.in} timeout={600}>
-							{(state) => {
-								return (
-									<Box 
-										href='https://www.youtube.com/watch?v=CT-TjS3M7qs&list=PLeuzLo3oi_x3TAVLil8U0P_WB4ib0Vyot'
-										target="_blank"
-										width={this.state.boxWidth} className={state}>
-										<Image src="/assets/BCC-Tutorial/Asset-BCC-Tutorial-2-Img.png" />
-										<Name>Pemrograman Lanjut</Name>
-										<Desc>Konsep Object Oriented Programming dan penerapannya
-										</Desc>
-									</Box>
-								)
-							}}
-						</Transition> 
-						<Transition in={this.props.in} timeout={900}>
-							{(state) => {
-								return (
-									<Box
-										href='https://www.youtube.com/watch?v=AaP49TuVn2M&list=PLeuzLo3oi_x13BE5cx26W0iHWBYKajjvl'
-										target="_blank"
-										width={this.state.boxWidth} className={state}>
-										<Image src="/assets/BCC-Tutorial/Asset-BCC-Tutorial-2-Img.png" />
-										<Name>Algoritma & Struktur Data</Name>
-										<Desc>Mempelajari tentang Abstract Data Type dan struktur data
-										</Desc>
-									</Box>
-								)
-							}}
-						</Transition> 
-					</RowBox>
 				</Row>
 			</Wrapper>
 		)
